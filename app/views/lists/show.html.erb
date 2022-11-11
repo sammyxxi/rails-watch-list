@@ -1,4 +1,22 @@
-<h1>List</h1>
-<%= link_to 'Add Bookmark', new_list_bookmark_path(@list) %>
-<%= link_to 'Destroy Bookmark', bookmark_path(@list) %>
-<%= link_to 'All Lists', lists_path %>
+<div class="container">
+  <div class="text-center pt-3">
+    <h1><%= @list.name %></h1>
+  </div>
+  <%= link_to 'Add Bookmark', new_list_bookmark_path(@list), class: "btn btn-danger mt-2 mb-2" %>
+  <%= link_to 'All Lists', lists_path, class: "btn btn-danger mt-2 mb-2" %>
+  <div class="row row-cols-4" id="movies_containter">
+    <% @list.bookmarks.each do |bookmark|  %>
+      <div class="col">
+        <div class="card p-3" style="background-image:linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url(<%= bookmark.movie.poster_url %>);">
+          <h2><%= bookmark.movie.title %></h2>
+          <p><%= bookmark.movie.overview %></p>
+          <%= bookmark.movie.rating %>
+          <%= bookmark.comment %>
+          <%= link_to bookmark_path(bookmark), data: { turbo_method: 'delete', turbo_confirm: "Remove #{bookmark.movie.title} from #{@list.name}?" } do %>
+            <i class="fa-regular fa-trash-can fa-lg"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

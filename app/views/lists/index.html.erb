@@ -4,8 +4,10 @@
     <p>Find the perfect choice for your movie night!</p>
   </div>
 </div>
-<%= link_to 'Create New List', new_list_path, class: "btn btn-flat" %>
-<div class="container_grid">
+<div class="text-center">
+  <%= link_to 'Create New List', new_list_path, class: "btn btn-danger btn-lg mt-3" %>
+</div>
+<div class="container_grid m-3" >
   <% @lists.each do |list| %>
     <div class="cards">
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
