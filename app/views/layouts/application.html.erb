@@ -11,16 +11,16 @@
   <body>
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img src="https://www.freepnglogos.com/uploads/popcorn-png/popcorn-popcornbucket-college-health-sciences-24.png" />
-        </a>
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <i class="fa-solid fa-circle-play fa-fw fa-2x text-white mt-md-1 mt-0"></i>
+        <% end %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Lists</a>
+              <%= link_to 'Lists', root_path, class: "navbar-brand" %>
             </li>
             <li class="nav-item dropdown">
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
