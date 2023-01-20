@@ -57,3 +57,232 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+
+.card {
+  padding: 2rem;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+
+  &.movie {
+    height: 450px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: normal;
+    transition: background-blend-mode ease-in-out .3s, transform ease-in-out .3s;
+    transform: scale(1);
+    display: flex;
+    align-items: end;
+
+    &.no-hover {
+      transition: none;
+      color: white;
+      display: flex;
+      justify-content: end;
+      text-align: left;
+      font-size: calc(2.5rem + 0.3vw);
+      line-height: 3rem;
+
+      &:hover {
+        transform: none;
+        color: white;
+      }
+    }
+
+    .movie-rating {
+      opacity: 1;
+      font-size: calc(1.275rem + 0.3vw);
+      color: white;
+      padding: .4rem .8rem;
+      width: fit-content;
+      border-radius: 1rem;
+      filter: drop-shadow(0px 0px 4px rgba(0,0,0, .2));
+
+      &.green {
+        background: $success;
+      }
+
+      &.yellow {
+        background: $info;
+      }
+    }
+
+    .movie-comment {
+      opacity: 1;
+      color: white;
+      background: rgba($dark-gray, .65);
+      position: absolute;
+      border-radius: 0 0 1rem 1rem;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 2rem 1rem;
+      transition: opacity ease-in-out .1s;
+
+      p {
+        margin: 0;
+        font-style: italic;
+      }
+    }
+
+    &-overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      background: rgba($primary, .9);
+      transition: opacity ease-in-out .2s;
+
+      h2 {
+        color: white;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        color: white;
+      }
+
+      a {
+        opacity: .5;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    &:hover {
+      background-blend-mode: luminosity;
+      transform: scale(1.0125);
+
+      .movie-overlay {
+        opacity: 1;
+      }
+
+      .movie-comment,
+      .movie-rating {
+        opacity: 0;
+      }
+
+    }
+  }
+
+  &.list {
+    position: relative;
+    min-height: 320px;
+    height: 100%;
+    transition: transform ease-in-out .3s;
+    transform: scale(1);
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    color: white;
+    background: rgba($gray, .5);
+    text-align: left;
+    font-size: calc(2.5rem + 0.3vw);
+    line-height: 3rem;
+
+    .description {
+      font-size: 1rem;
+      line-height: 2rem;
+    }
+
+    a {
+      text-decoration: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .list-overlay {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      opacity: .6;
+      border-radius: 1rem;
+      background: black;
+      transition: opacity ease-in-out .2s;
+
+      &-count {
+        position: absolute;
+        top: 0.5rem;
+        right: 1.5rem;
+        font-size: 1rem;
+        opacity: .65;
+        transition: opacity ease-in-out .1s;
+      }
+    }
+
+    &.no-hover {
+      transition: none;
+
+      &:hover {
+        transform: none;
+        color: white;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.0125);
+      color: $primary;
+      text-shadow: 0 0 4px rgba(0,0,0,.4);
+
+      i {
+        text-shadow: none;
+      }
+
+      .list-overlay {
+        opacity: 0;
+
+        &-count {
+          color: white;
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+
+  &.form {
+    transform: scale(1);
+    transition: transform ease-in-out .3s;
+
+    &:hover {
+      transform: scale(1.0025);
+    }
+  }
+
+  &.add-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba($off-white, .1);
+    background: rgba($off-white, .1);
+    transition: background ease-in-out .2s;
+    font-size: 1rem;
+
+    a {
+      text-decoration: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    &:hover {
+      background: rgba($off-white, .2);
+      color: rgba($off-white, .1);
+      transform: none;
+    }
+  }
+}
