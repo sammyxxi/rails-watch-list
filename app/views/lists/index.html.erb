@@ -1,5 +1,5 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1620177088260-a9150572baf4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80);">
-  <div class="container">
+  <div class="title-container">
     <h1>Curated Movies List</h1>
     <p>Find the perfect choice for your movie night!</p>
   </div>
@@ -15,4 +15,32 @@
       </div>
     </div>
   <% end %>
+</div>
+<div class="col-12 col-md-11 py-3 d-flex align-items-center" style="min-height: 100vh;">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+    <div class="col">
+      <div class="card list no-hover" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(https://source.unsplash.com/wMkaMXTJjlQ); background-size:cover; background-repeat: no-repeat;">
+        <span class="d-inline mb-3">Welcome to <span class="text-primary">Movie List</span></span>
+        <span class="description">An interactive movie database to mark your favourites and keep them in order 😎</span>
+      </div>
+    </div>
+    <% @lists.each do |list|  %>
+      <div class="col">
+        <div class="card list" style="background-image: url(<%= list.image.attached? ? cl_image_path(list.image.key) : 'https://source.unsplash.com/I6mx55jXOvM' %>); background-size:cover; background-repeat: no-repeat;">
+          <div class="list-overlay"></div>
+          <% if list.movies.length != 0 %>
+            <span class="list-overlay-count text-end"><%= list.movies.length %> movie<%= list.movies.length > 1 ? 's' : '' %></span>
+          <% end%>
+          <%= list.name.capitalize %>
+          <%= link_to '', list_path(list) %>
+        </div>
+      </div>
+    <% end %>
+    <div class="col">
+      <div class="card list add-item">
+        <i class="fa-solid fa-circle-plus fa-3x"></i>
+        <%= link_to 'Create New List', new_list_path, class: "btn btn-danger btn-lg mt-3"  %>
+      </div>
+    </div>
+  </div>
 </div>
